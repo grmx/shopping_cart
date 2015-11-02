@@ -13,6 +13,12 @@ FactoryGirl.define do
         create_list(:shopping_cart_order_item, 3, order: order)
       end
     end
- end
+
+    factory :blank_order do
+      billing_address nil
+      shipping_address nil
+      delivery nil
+    end
+  end
 
 end

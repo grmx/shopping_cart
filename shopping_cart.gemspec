@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.4"
   s.add_dependency "aasm"
+  s.add_dependency "haml-rails"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"

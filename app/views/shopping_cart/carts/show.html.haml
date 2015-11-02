@@ -1,0 +1,14 @@
+%h2 Your cart
+
+- unless @order_items.empty?
+  = form_tag cart_path, method: :put do
+    - @order_items.each do |item|
+      = fields_for "order_items[]", item do |f|
+        = render 'row', item: item, f: f
+    = submit_tag 'Update Cart', class: 'btn btn-default btn-sm btn-block'
+  = button_to cart_path, method: :delete, class: 'btn btn-danger btn-block' do
+    Empty Cart
+  %h4= "Total: #{order_total_price}"
+  = link_to 'Checkout', order_steps_path, class: 'btn btn-success btn-block'
+- else
+  %p Your shopping cart is empty.
