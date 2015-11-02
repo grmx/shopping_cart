@@ -12,7 +12,7 @@ module ShoppingCart
     end
 
     describe 'association' do
-      # it { should belong_to(:user) }
+      it { should belong_to(:user).class_name('User') }
     end
 
     describe 'additional methods' do

@@ -4,7 +4,7 @@ FactoryGirl.define do
     exp_month 2
     exp_year 2017
     cvv { Faker::Number.number(3) }
-    user nil
+    user
   end
 
 end

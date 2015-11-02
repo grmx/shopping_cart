@@ -1,6 +1,6 @@
 module ShoppingCart
   class CreditCard < ActiveRecord::Base
-    belongs_to :user
+    belongs_to :user, class_name: ShoppingCart.user_class.to_s
 
     validates :number, :exp_month, :exp_year, :cvv, presence: true
     validates :number, length: { is: 16 }

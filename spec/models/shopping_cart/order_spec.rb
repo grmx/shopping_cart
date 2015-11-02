@@ -14,7 +14,7 @@ module ShoppingCart
     end
 
     describe 'associations' do
-      xit { should belong_to(:user) }
+      it { should belong_to(:user).class_name('User') }
       it { should have_many(:order_items).dependent(:destroy) }
       it { should belong_to(:billing_address).class_name('Address').autosave(true) }
       it { should belong_to(:shipping_address).class_name('Address').autosave(true) }
