@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102075702) do
+ActiveRecord::Schema.define(version: 20151102100352) do
+
+  create_table "books", force: :cascade do |t|
+    t.string   "title"
+    t.decimal  "price",      precision: 5, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
 
   create_table "shopping_cart_addresses", force: :cascade do |t|
     t.string   "first_name"
@@ -42,6 +49,38 @@ ActiveRecord::Schema.define(version: 20151102075702) do
     t.decimal  "price",      precision: 5, scale: 2
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+  end
+
+  create_table "shopping_cart_order_items", force: :cascade do |t|
+    t.decimal  "price",      precision: 5, scale: 2
+    t.integer  "quantity"
+    t.integer  "book_id"
+    t.integer  "order_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "shopping_cart_order_items", ["book_id"], name: "index_shopping_cart_order_items_on_book_id"
+  add_index "shopping_cart_order_items", ["order_id"], name: "index_shopping_cart_order_items_on_order_id"
+
+  create_table "shopping_cart_orders", force: :cascade do |t|
+    t.decimal  "total_price",         precision: 5, scale: 2
+    t.string   "state",                                       default: "in_progress"
+    t.datetime "completed_at"
+    t.integer  "user_id"
+    t.integer  "billing_address_id"
+    t.integer  "shipping_address_id"
+    t.integer  "delivery_id"
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
+  end
+
+  add_index "shopping_cart_orders", ["delivery_id"], name: "index_shopping_cart_orders_on_delivery_id"
+  add_index "shopping_cart_orders", ["user_id"], name: "index_shopping_cart_orders_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
