@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 4.2.4"
+  s.add_dependency "aasm"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
@@ -26,4 +27,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "awesome_print"
   s.add_development_dependency "shoulda-matchers"
   s.add_development_dependency "faker"
+  s.add_development_dependency "database_cleaner"
 end
