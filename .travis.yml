@@ -4,5 +4,4 @@ addons:
     repo_token: ee6dffbce3902e62bbc343ceea4c24f2d2f9f8add514006c18c60bfdbbead98e
 script:
   - RAILS_ENV=test bundle exec rake db:migrate
-  - bundle exec rake db:test:prepare
   - bundle exec rake spec
