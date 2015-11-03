@@ -213,7 +213,6 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
-  haml-rails
   jquery-rails
   pry-rails
   rspec-rails
