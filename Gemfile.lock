@@ -213,7 +213,6 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
-  jquery-rails
   pry-rails
   rspec-rails
   shopping_cart!
