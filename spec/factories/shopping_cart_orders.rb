@@ -19,6 +19,11 @@ FactoryGirl.define do
       shipping_address nil
       delivery nil
     end
-  end
 
+    trait :random_state do
+      state { %w(in_progress in_queue in_delivery delivered canceled).sample }
+    end
+
+    factory :order_with_random_state, traits: [:random_state]
+  end
 end

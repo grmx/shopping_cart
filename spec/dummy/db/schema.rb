@@ -54,14 +54,14 @@ ActiveRecord::Schema.define(version: 20151102180506) do
   create_table "shopping_cart_order_items", force: :cascade do |t|
     t.decimal  "price",      precision: 5, scale: 2
     t.integer  "quantity"
-    t.integer  "book_id"
+    t.integer  "product_id"
     t.integer  "order_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
 
-  add_index "shopping_cart_order_items", ["book_id"], name: "index_shopping_cart_order_items_on_book_id"
   add_index "shopping_cart_order_items", ["order_id"], name: "index_shopping_cart_order_items_on_order_id"
+  add_index "shopping_cart_order_items", ["product_id"], name: "index_shopping_cart_order_items_on_product_id"
 
   create_table "shopping_cart_orders", force: :cascade do |t|
     t.decimal  "total_price",         precision: 5, scale: 2

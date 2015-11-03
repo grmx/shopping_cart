@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "wicked"
   s.add_dependency "countries"
   s.add_dependency "country_select"
+  s.add_dependency "jquery-rails"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
@@ -34,4 +35,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "database_cleaner"
   s.add_development_dependency "devise"
   s.add_development_dependency "haml-rails"
+  s.add_development_dependency "jquery-rails"
+  s.add_development_dependency "codeclimate-test-reporter"
 end

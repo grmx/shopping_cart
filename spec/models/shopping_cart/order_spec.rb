@@ -22,22 +22,68 @@ module ShoppingCart
     end
 
     describe 'additional methods' do
+      let(:user) { create(:user) }
       let(:book) { create(:book) }
       let!(:order) { build(:shopping_cart_order) }
+      let!(:orders) { create_list(:order_with_random_state, 8, user: user) }
 
-      before { order.add_book(book) }
+      before { order.add_product(book) }
 
-      describe '.add_book' do
+      describe '.in_progress' do
+        it 'doesn\'t return all orders'  do
+          expect(user.orders.in_progress).to_not match_array(orders)
+        end
+
+        it 'returns orders in progress' do
+          expect(user.orders.in_progress).
+            to match_array(user.orders.where(state: 'in_progress'))
+        end
+      end
+
+      describe '.in_queue' do
+        it 'doesn\'t return all orders'  do
+          expect(user.orders.in_queue).to_not match_array(orders)
+        end
+
+        it 'returns orders in queue' do
+          expect(user.orders.in_queue).
+            to match_array(user.orders.where(state: 'in_queue'))
+        end
+      end
+
+      describe '.in_delivery' do
+        it 'doesn\'t return all orders'  do
+          expect(user.orders.in_delivery).to_not match_array(orders)
+        end
+
+        it 'returns orders in delivery' do
+          expect(user.orders.in_delivery).
+            to match_array(user.orders.where(state: 'in_delivery'))
+        end
+      end
+
+      describe '.delivered' do
+        it 'doesn\'t return all orders'  do
+          expect(user.orders.delivered).to_not match_array(orders)
+        end
+
+        it 'returns delivered order' do
+          expect(user.orders.delivered).
+            to match_array(user.orders.where(state: 'delivered'))
+        end
+      end
+
+      describe '.add_product' do
         it 'adds a book to the order' do
-          expect(order.order_items.first.book).to eq book
+          expect(order.order_items.first.product).to eq book
         end
 
         it 'doesn\'t return the same book twice' do
-          expect { order.add_book(book) }.to_not change { order.order_items }
+          expect { order.add_product(book) }.to_not change { order.order_items }
         end
 
         it 'changes order item quantity' do
-          expect { order.add_book(book) }.
+          expect { order.add_product(book) }.
             to change { order.order_items.first.quantity }.from(1).to(2)
         end
       end
@@ -48,7 +94,7 @@ module ShoppingCart
         end
 
         xit 'returns total price for several order items' do
-          order.add_book(book)
+          order.add_product(book)
           expect { order.calc_total_price }.
             to change { order.total_price }.from(book.price).to(book.price * 2)
         end

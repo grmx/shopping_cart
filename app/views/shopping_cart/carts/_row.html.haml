@@ -1,5 +1,5 @@
 %tr
-  %td= item.book.title
+  %td= item.product.title
   %td= number_to_currency item.price
   %td= f.number_field :quantity, min: 0
   %td= link_to 'Delete', order_item_path(item), method: :delete, data: { confirm: 'Are you sure?' }

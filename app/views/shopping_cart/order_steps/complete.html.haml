@@ -1,33 +1,33 @@
 %h2 Checkout
 
-%h3= "Order #{current_user.last_order.id}"
+%h3= "Order #{last_order.id}"
 
 .row
   .col-md-3
     %h4 Shipping address
-    %p= @form.shipping_address.full_name
-    %p= @form.shipping_address.address
+    %p= last_order.shipping_address.full_name
+    %p= last_order.shipping_address.address
     %p
-      = @form.shipping_address.city
-      = @form.shipping_address.zipcode
-    %p= @form.shipping_address.country
+      = last_order.shipping_address.city
+      = last_order.shipping_address.zipcode
+    %p= last_order.shipping_address.country
     %p
       Phone
-      = @form.shipping_address.phone
+      = last_order.shipping_address.phone
   .col-md-3
     %h4 Billing address
-    %p= @form.billing_address.full_name
-    %p= @form.billing_address.address
+    %p= last_order.billing_address.full_name
+    %p= last_order.billing_address.address
     %p
-      = @form.billing_address.city
-      = @form.billing_address.zipcode
-    %p= @form.billing_address.country
+      = last_order.billing_address.city
+      = last_order.billing_address.zipcode
+    %p= last_order.billing_address.country
     %p
       Phone
-      = @form.billing_address.phone
+      = last_order.billing_address.phone
   .col-md-3
     %h4 Shipments
-    %p= current_user.last_order.delivery.name
+    %p= last_order.delivery.name
   .col-md-3
     %h4 Shipments
     %p= current_user.credit_card.mask
@@ -37,14 +37,14 @@
   %table.table
     %thead
       %tr
-        %th Book
+        %th Product
         %th Price
         %th Qty
         %th Total
     %tbody
-      - current_user.last_order.order_items.each do |item|
+      - last_order.order_items.each do |item|
         %tr
-          %td= item.book.title
+          %td= item.product.title
           %td= number_to_currency item.price
           %td
             %center= item.quantity
@@ -56,10 +56,10 @@
           %p Order Total
         %td{colspan: 2}
           %p
-            %b= number_to_currency current_user.last_order.total_price
+            %b= number_to_currency last_order.total_price
           %p
-            %b= number_to_currency current_user.last_order.delivery.price
+            %b= number_to_currency last_order.delivery.price
           %p
-            %b= number_to_currency current_user.last_order.total_price + current_user.last_order.delivery.price
+            %b= number_to_currency last_order.total_price + last_order.delivery.price
 
-%p= link_to 'Go back to the store', root_path
+%p= link_to 'Go back to the store', main_app.root_path

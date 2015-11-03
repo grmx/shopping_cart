@@ -1,6 +1,6 @@
 module ShoppingCart
   class OrderItem < ActiveRecord::Base
-    belongs_to :book
+    belongs_to :product, class_name: ShoppingCart.product_class.to_s
     belongs_to :order
     has_one :user, through: :order, class_name: ShoppingCart.user_class.to_s
 

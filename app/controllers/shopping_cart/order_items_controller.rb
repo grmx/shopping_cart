@@ -3,9 +3,9 @@ require_dependency "shopping_cart/application_controller"
 module ShoppingCart
   class OrderItemsController < ApplicationController
     def create
-      book = Book.find(params[:book_id])
+      book = Book.find(params[:product_id])
       order = current_order
-      order.add_book(book)
+      order.add_product(book)
       order.calc_total_price
       if order.save
         flash[:success] = 'The book successfully added to the Cart.'
@@ -28,9 +28,9 @@ module ShoppingCart
     end
 
     def destroy
-      @order_item = OrderItem.find(params[:id])
-      @order_item.destroy
-      order = @order_item.order
+      order_item = OrderItem.find(params[:id])
+      order_item.destroy
+      order = order_item.order
       order.calc_total_price
       order.save
       flash[:warning] = 'The book successfully removed from shopping cart.'

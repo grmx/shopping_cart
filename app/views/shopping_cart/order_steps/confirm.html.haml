@@ -39,14 +39,14 @@
   %table.table
     %thead
       %tr
-        %th Book
+        %th Product
         %th Price
         %th Qty
         %th Total
     %tbody
       - current_order.order_items.each do |item|
         %tr
-          %td= item.book.title
+          %td= item.product.title
           %td= number_to_currency item.price
           %td
             %center= item.quantity
