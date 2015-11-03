@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Dummy
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %ul
+      - if user_signed_in?
+        %li= "Signed as #{current_user.email}"
+        %li= link_to 'Sign out', destroy_user_session_path, method: :delete
+        %li= link_to 'Cart', shopping_cart.cart_path
+      - else
+        %li= link_to 'Sign up', new_user_registration_path
+        %li= link_to 'Sign in', new_user_session_path
+    %p.notice= notice
+    %p.alert= alert
+    = yield

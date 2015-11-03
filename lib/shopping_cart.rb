@@ -1,4 +1,8 @@
 require "shopping_cart/engine"
+require "aasm"
+require "wicked"
+require "countries"
+require "country_select"
 
 module ShoppingCart
   mattr_accessor :user_class

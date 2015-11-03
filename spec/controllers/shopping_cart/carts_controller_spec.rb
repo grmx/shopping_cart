@@ -1,13 +1,10 @@
 module ShoppingCart
   RSpec.describe CartsController, type: :controller do
-    let!(:user) { create(:user) }
+    routes { ShoppingCart::Engine.routes }
 
-    before do
-      allow(request.env['warden']).to receive(:authenticate!).and_return(user)
-      allow(controller).to receive(:current_user).and_return(user)
-    end
+    sign_in_user
 
-    let!(:order) { create(:order_with_items, user: user) }
+    let!(:order) { create(:order_with_items, user: @user) }
 
     describe 'GET #show' do
       it 'responds successfully with an HTTP 200 status code' do

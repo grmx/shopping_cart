@@ -19,6 +19,9 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.2.4"
   s.add_dependency "aasm"
   s.add_dependency "haml-rails"
+  s.add_dependency "wicked"
+  s.add_dependency "countries"
+  s.add_dependency "country_select"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
@@ -29,4 +32,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "shoulda-matchers"
   s.add_development_dependency "faker"
   s.add_development_dependency "database_cleaner"
+  s.add_development_dependency "devise"
+  s.add_development_dependency "haml-rails"
 end

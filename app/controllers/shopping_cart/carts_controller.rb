@@ -2,7 +2,6 @@ require_dependency "shopping_cart/application_controller"
 
 module ShoppingCart
   class CartsController < ApplicationController
-
     def show
       @order = current_order
       @order_items = current_order.order_items.order('created_at DESC')

@@ -1,0 +1,15 @@
+%ul
+  - wizard_steps.to_enum.with_index(1) do |order_step, index|
+    - if order_step.eql? step
+      %li.active
+        = link_to wizard_path(order_step) do
+          = render 'step_link', i: index, os: order_step
+    - else
+      - if session[order_step]
+        %li
+          = link_to wizard_path(order_step) do
+            = render 'step_link', i: index, os: order_step
+      - else
+        %li.disabled
+          = link_to '' do
+            = render 'step_link', i: index, os: order_step

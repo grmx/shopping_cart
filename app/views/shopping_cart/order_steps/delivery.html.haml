@@ -1,0 +1,12 @@
+%h2 Checkout
+
+= render 'steps'
+
+%h3 Delivery
+= form_tag wizard_path, method: :patch do |f|
+  - @form.deliveries.each do |delivery|
+    %div.radio
+      %label
+        = radio_button_tag 'delivery[id]', delivery.id, false
+        = "#{delivery.name} + #{number_to_currency delivery.price}"
+  = submit_tag 'Save and continue'

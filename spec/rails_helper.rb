@@ -8,8 +8,10 @@ require 'rspec/rails'
 require 'shoulda-matchers'
 require 'factory_girl_rails'
 require 'database_cleaner'
+require 'haml-rails'
 require 'faker'
 require 'aasm'
+require 'devise'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -30,6 +32,7 @@ Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f}
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
+ActiveRecord::Migrator.migrations_paths = 'spec/dummy/db/migrate'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
@@ -38,6 +41,10 @@ RSpec.configure do |config|
 
   # FactoryGirl Methods
   config.include FactoryGirl::Syntax::Methods
+
+  # Devise helpers
+  config.include Devise::TestHelpers, type: :controller
+  config.extend ShoppingCart::ControllerSpecHelper, type: :controller
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
