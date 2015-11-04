@@ -41,11 +41,13 @@ rake shopping_cart:install:migrations
 rake db:migrate
 ```
 
-Add associations to your User model:
+Add to your User model:
 
 ```ruby
-has_many :orders, dependent: :destroy, class_name: 'ShoppingCart::Order'
-has_one  :credit_card, dependent: :destroy, class_name: 'ShoppingCart::CreditCard'
+class User < ActiveRecord::Base
+  ...
+  acts_as_user
+end
 ```
 
 Also you need to fill delivery types:

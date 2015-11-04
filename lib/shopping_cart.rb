@@ -1,4 +1,5 @@
 require "shopping_cart/engine"
+require "shopping_cart/acts_as_user"
 require "aasm"
 require "wicked"
 require "countries"
