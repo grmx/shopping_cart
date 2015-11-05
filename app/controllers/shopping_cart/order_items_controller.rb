@@ -3,9 +3,9 @@ require_dependency "shopping_cart/application_controller"
 module ShoppingCart
   class OrderItemsController < ApplicationController
     def create
-      book = Book.find(params[:product_id])
+      product = ShoppingCart.product_class.find(params[:product_id])
       order = current_order
-      order.add_product(book)
+      order.add_product(product)
       order.calc_total_price
       if order.save
         flash[:success] = 'The book successfully added to the Cart.'
