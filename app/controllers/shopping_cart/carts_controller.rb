@@ -22,10 +22,14 @@ module ShoppingCart
     private
 
     def order_update(order)
-      order.order_items.update(params[:order_items].keys, params[:order_items]
-        .values)
+      order.order_items.update(order_item_params.keys, order_item_params.values)
       order.calc_total_price
       order.save
+    end
+
+    def order_item_params
+      params.require(:order_items).permit(params[:order_items].keys.
+        map { |id| { "#{id}": [:quantity] } })
     end
   end
 end
