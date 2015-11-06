@@ -1,0 +1,8 @@
+en:
+  cart:
+    updated: 'Shopping Cart successfully updated'
+    emptied: 'Shopping Cart successfully emptied'
+  product:
+    added: 'Product successfully added to Shopping Cart'
+    updated: 'Shopping Cart successfully updated'
+    deleted: 'Product successfully removed from Shopping Cart'

@@ -9,14 +9,12 @@ module ShoppingCart
 
     def update
       order_update(current_order)
-      flash[:success] = 'The Cart successfully updated.'
-      redirect_to cart_path
+      redirect_to cart_path, notice: t('cart.updated')
     end
 
     def destroy
       current_order.empty!
-      flash[:warning] = 'The Cart successfully emptied.'
-      redirect_to cart_path
+      redirect_to cart_path, notice: t('cart.emptied')
     end
 
     private

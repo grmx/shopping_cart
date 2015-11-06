@@ -29,9 +29,9 @@ module ShoppingCart
           to change{order.order_items.first.quantity}.from(1).to(2)
       end
 
-      it 'assigns a success flash message' do
+      it 'assigns a notice message' do
         post :update, order_items: { "#{order.order_items.first.id}": { quantity: 2 } }
-        expect(flash[:success]).not_to be_nil
+        expect(flash.notice).not_to be_nil
       end
 
       it 'redirects to the cart' do
@@ -45,9 +45,9 @@ module ShoppingCart
         expect { delete :destroy }.to change(order.order_items, :count).from(3).to(0)
       end
 
-      it 'assigns a warning flash message' do
+      it 'assigns a notice message' do
         delete :destroy
-        expect(flash[:warning]).not_to be_nil
+        expect(flash.notice).not_to be_nil
       end
 
       it 'redirects to the cart' do
