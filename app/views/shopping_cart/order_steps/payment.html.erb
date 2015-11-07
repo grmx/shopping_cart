@@ -1,0 +1,11 @@
+<h2>Checkout</h2>
+<%= render 'steps' %>
+<h3>Credit card</h3>
+<%= render 'shared/error_messages', object: @form.payment %>
+<%= form_for @form.payment, url: wizard_path, method: :patch do |f| %>
+  <%= f.text_field :number, placeholder: 'Number' %>
+  <%= f.select :exp_month, 01..12, { prompt: 'Exp. month' }, { class: '' } %>
+  <%= f.select :exp_year, Time.now.year..Time.now.year + 10, { prompt: 'Exp. year' }, { class: '' } %>
+  <%= f.password_field :cvv, placeholder: 'Card Code', class: 'form-control' %>
+  <%= f.submit 'Save and continue' %>
+<% end %>

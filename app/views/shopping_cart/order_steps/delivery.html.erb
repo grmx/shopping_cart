@@ -1,0 +1,14 @@
+<h2>Checkout</h2>
+<%= render 'steps' %>
+<h3>Delivery</h3>
+<%= form_tag wizard_path, method: :patch do |f| %>
+  <% @form.deliveries.each do |delivery| %>
+    <div>
+      <label>
+        <%= radio_button_tag 'delivery[id]', delivery.id, false %>
+        <%= "#{delivery.name} + #{number_to_currency delivery.price}" %>
+      </label>
+    </div>
+  <% end %>
+  <%= submit_tag 'Save and continue' %>
+<% end %>

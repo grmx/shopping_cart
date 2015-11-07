@@ -1,0 +1,8 @@
+<h2>Checkout</h2>
+<%= render 'steps' %>
+<h3>Shipping Address</h3>
+<%= render 'shared/error_messages', object: @form.shipping_address %>
+<%= form_for @form.shipping_address, url: wizard_path, method: :patch do |shipp| %>
+  <%= render 'address_form', addr: shipp %>
+  <%= shipp.submit 'Save and continue' %>
+<% end %>

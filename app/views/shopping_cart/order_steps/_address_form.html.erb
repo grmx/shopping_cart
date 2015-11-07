@@ -1,0 +1,21 @@
+<div>
+  <%= addr.text_field :first_name, placeholder: 'First name' %>
+</div>
+<div>
+  <%= addr.text_field :last_name, placeholder: 'Last name' %>
+</div>
+<div>
+  <%= addr.text_field :address, placeholder: 'Street address' %>
+</div>
+<div>
+  <%= addr.text_field :city, placeholder: 'City' %>
+</div>
+<div>
+  <%= addr.country_select :country, { prompt: 'Select country' }, { class: 'form-control' } %>
+</div>
+<div>
+  <%= addr.text_field :zipcode, placeholder: 'Zipcode' %>
+</div>
+<div>
+  <%= addr.text_field :phone, placeholder: 'Phone' %>
+</div>

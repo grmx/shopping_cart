@@ -1,0 +1,12 @@
+<h2>Books</h2>
+<% @books.each do |book| %>
+  <ul>
+    <li>
+      <%= book.title %>
+      <%= "(#{number_to_currency book.price})" %>
+      <% if user_signed_in? %>
+        <%= button_to 'Add to cart', shopping_cart.order_items_path(product_id: book) %>
+      <% end %>
+    </li>
+  </ul>
+<% end %>

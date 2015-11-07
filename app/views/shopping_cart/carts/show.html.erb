@@ -1,0 +1,23 @@
+<h2>Your cart</h2>
+<% unless @order_items.empty? %>
+  <%= form_tag cart_path, method: :put do %>
+    <table>
+      <thead></thead>
+      <tbody>
+        <% @order_items.each do |item| %>
+          <%= fields_for "order_items[]", item do |f| %>
+            <%= render 'row', item: item, f: f %>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <%= submit_tag 'Update Cart' %>
+  <% end %>
+  <%= button_to 'Empty Cart', cart_path, method: :delete %>
+  <h4>
+    <%= "Total: #{order_total_price}" %>
+  </h4>
+  <%= link_to 'Checkout', order_steps_path %>
+<% else %>
+  <p>Your shopping cart is empty.</p>
+<% end %>

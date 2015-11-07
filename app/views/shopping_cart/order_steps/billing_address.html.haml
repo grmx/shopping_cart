@@ -1,9 +1,0 @@
-%h2 Checkout
-
-= render 'steps'
-
-%h3 Billing address
-= render 'shared/error_messages', object: @form.billing_address
-= form_for @form.billing_address, url: wizard_path, method: :patch do |bill|
-  = render 'address_form', addr: bill
-  = bill.submit 'Save and Continue'

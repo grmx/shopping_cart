@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <title>Dummy</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <ul>
+      <% if user_signed_in? %>
+        <li>
+          <%= "Signed as #{current_user.email}" %>
+        </li>
+        <li>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        </li>
+        <li>
+          <%= link_to 'Cart', shopping_cart.cart_path %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to 'Sign up', new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to 'Sign in', new_user_session_path %>
+        </li>
+      <% end %>
+    </ul>
+    <p class="notice">
+      <%= notice %>
+    </p>
+    <p class="alert">
+      <%= alert %>
+    </p>
+    <%= yield %>
+  </body>
+</html>

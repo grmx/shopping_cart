@@ -1,0 +1,119 @@
+<h2>Checkout</h2>
+<%= render 'steps' %>
+<h3>Confirm</h3>
+<div>
+  <div>
+    <h4>Shipping Address</h4>
+    <p>
+      <%= @form.shipping_address.full_name %>
+    </p>
+    <p>
+      <%= @form.shipping_address.address %>
+    </p>
+    <p>
+      <%= @form.shipping_address.city %>
+      <%= @form.shipping_address.zipcode %>
+    </p>
+    <p>
+      <%= @form.shipping_address.country %>
+    </p>
+    <p>
+      Phone
+      <%= @form.shipping_address.phone %>
+    </p>
+  </div>
+  <div>
+    <h4>Billing Address</h4>
+    <p>
+      <%= @form.billing_address.full_name %>
+    </p>
+    <p>
+      <%= @form.billing_address.address %>
+    </p>
+    <p>
+      <%= @form.billing_address.city %>
+      <%= @form.billing_address.zipcode %>
+    </p>
+    <p>
+      <%= @form.billing_address.country %>
+    </p>
+    <p>
+      Phone
+      <%= @form.billing_address.phone %>
+    </p>
+  </div>
+  <div>
+    <h4>Shipments</h4>
+    <p>
+      <%= current_order.delivery.name %>
+    </p>
+  </div>
+  <div>
+    <h4>Payment Information</h4>
+    <p>
+      <%= current_user.credit_card.mask %>
+    </p>
+    <p>
+      <%= current_user.credit_card.date %>
+    </p>
+  </div>
+</div>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_order.order_items.each do |item| %>
+        <tr>
+          <td>
+            <%= item.product.title %>
+          </td>
+          <td>
+            <%= number_to_currency item.price %>
+          </td>
+          <td>
+            <center>
+              <%= item.quantity %>
+            </center>
+          </td>
+          <td>
+            <%= number_to_currency(item.quantity * item.price) %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td class="subtotal" colspan="4">
+          <p>Subtotal:</p>
+          <p>Shipping:</p>
+          <p>Order Total:</p>
+        </td>
+        <td colspan="2">
+          <p>
+            <b>
+              <%= number_to_currency current_order.total_price %>
+            </b>
+          </p>
+          <p>
+            <b>
+              <%= number_to_currency current_order.delivery.price %>
+            </b>
+          </p>
+          <p>
+            <b>
+              <%= number_to_currency current_order.total_price + current_order.delivery.price %>
+            </b>
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>
+  <%= link_to 'Place Order', wizard_path, method: :patch %>
+</p>

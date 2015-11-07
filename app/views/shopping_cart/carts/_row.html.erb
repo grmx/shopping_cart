@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <%= item.product.title %>
+  </td>
+  <td>
+    <%= number_to_currency item.price %>
+  </td>
+  <td>
+    <%= f.number_field :quantity, min: 0, id: 'qty' %>
+  </td>
+  <td>
+    <%= link_to 'Delete', order_item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </td>
+</tr>
