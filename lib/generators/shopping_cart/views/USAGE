@@ -1,0 +1,24 @@
+Description:
+    Shopping Cart views generator
+
+Example:
+    rails generate shopping_cart:views
+
+    This will create:
+        app/views/shopping_cart/carts
+        app/views/shopping_cart/carts/_row.html.erb
+        app/views/shopping_cart/carts/show.html.erb
+        app/views/shopping_cart/order_steps
+        app/views/shopping_cart/order_steps/_address_form.html.erb
+        app/views/shopping_cart/order_steps/_step_link.html.erb
+        app/views/shopping_cart/order_steps/_steps.html.erb
+        app/views/shopping_cart/order_steps/billing_address.html.erb
+        app/views/shopping_cart/order_steps/complete.html.erb
+        app/views/shopping_cart/order_steps/confirm.html.erb
+        app/views/shopping_cart/order_steps/delivery.html.erb
+        app/views/shopping_cart/order_steps/payment.html.erb
+        app/views/shopping_cart/order_steps/shipping_address.html.erb
+        app/views/shopping_cart/orders
+        app/views/shopping_cart/orders/_order_row.html.erb
+        app/views/shopping_cart/orders/index.html.erb
+        app/views/shopping_cart/orders/show.html.erb

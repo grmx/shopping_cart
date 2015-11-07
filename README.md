@@ -70,10 +70,10 @@ ShoppingCart::Delivery.create!([
 }])
 ```
 
-For notice messages add to `app/views/layout/application.html.erb`:
+For notification messages add to `app/views/layout/application.html.erb`:
 
 ```ruby
-<p><%= notice %></p>
+<%= notice %>
 ```
 
 ### Helpers
@@ -89,6 +89,19 @@ Add a link to the cart:
 ```ruby
 = link_to 'Cart', shopping_cart.cart_path
 ```
+
+Add a link to the orders history:
+
+```ruby
+= link_to 'Orders', shopping_cart.orders_path
+```
+
+### Views
+
+You can generate views for customization to `app/views/shopping_cart`:
+
+    $ rails generate shopping_cart:views
+
 
 ## Tests
 
