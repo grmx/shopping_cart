@@ -21,13 +21,6 @@ Edit your `app/controller/application_controller.rb` and add a current_user meth
 
 ### Initialization
 
-Configure `config/initializers/shopping_cart.rb`:
-
-```ruby
-ShoppingCart.user_class = "User"
-ShoppingCart.product_class = "Book"
-```
-
 Mount the shopping_cart engine in your `config/routes.rb`:
 
 ```ruby
@@ -46,8 +39,15 @@ Add to your User model:
 ```ruby
 class User < ActiveRecord::Base
   ...
-  acts_as_user
+  acts_as_customer
 end
+```
+
+Add to your Product model
+
+```ruby
+  ...
+  acts_as_product
 ```
 
 Also you need to fill delivery types:
@@ -66,6 +66,12 @@ ShoppingCart::Delivery.create!([
     name: 'UPS One Day',
     price: 15.00
 }])
+```
+
+For notice messages add to `app/views/layout/application.html.erb`:
+
+```ruby
+<p><%= notice %></p>
 ```
 
 ### Helpers
