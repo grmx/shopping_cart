@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <%= link_to order.id, shopping_cart.order_path(order) %>
+  </td>
+  <td>
+    <%= order.completed_at %>
+  </td>
+  <td>
+    <%= number_to_currency order.total_price %>
+  </td>
+  <td>
+    <%= link_to 'View', shopping_cart.order_path(order) %>
+  </td>
+</tr>

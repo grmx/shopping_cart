@@ -1,0 +1,64 @@
+<h2>
+  <%= "Order #{@order.id}" %>
+</h2>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.order_items.each do |item| %>
+        <tr>
+          <td>
+            <p>
+              <%= item.product.title %>
+            </p>
+          </td>
+          <td>
+            <%= number_to_currency item.price %>
+          </td>
+          <td>
+            <center>
+              <%= item.quantity %>
+            </center>
+          </td>
+          <td>
+            <%= number_to_currency(item.quantity * item.price) %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td class="subtotal" colspan="4">
+          <p>Subtotal:</p>
+          <p>Shipping:</p>
+          <p>Order Total:</p>
+        </td>
+        <td colspan="2">
+          <p>
+            <b>
+              <%= number_to_currency @order.total_price %>
+            </b>
+          </p>
+          <p>
+            <b>
+              <%= number_to_currency @order.delivery.price %>
+            </b>
+          </p>
+          <p>
+            <b>
+              <%= number_to_currency @order.total_price + @order.delivery.price %>
+            </b>
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>
+  <%= link_to 'Go back to Orders', shopping_cart.orders_path %>
+</p>
