@@ -1,0 +1,107 @@
+<h2>Orders</h2>
+
+<% if @in_progress %>
+  <h3>In Progress</h3>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @in_progress.order_items.each do |item| %>
+          <tr>
+            <td><%= item.product.title %></td>
+            <td>
+              <%= number_to_currency item.price %>
+            </td>
+            <td>
+              <center>
+                <%= item.quantity %>
+              </center>
+            </td>
+            <td>
+              <%= number_to_currency(item.quantity * item.price) %>
+            </td>
+          </tr>
+        <% end %>
+        <tr>
+          <td class="subtotal" colspan="4">
+            <p>Subtotal:</p>
+          </td>
+          <td colspan="2">
+            <p>
+              <b>
+                <%= order_total_price  %>
+              </b>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    <%= link_to 'Go to Cart', shopping_cart.cart_path %>
+  </p>
+<% end %>
+
+<% unless @in_queue.empty? %>
+  <h3>Waiting for Processing</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Completed at</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @in_queue.each do |order| %>
+        <%= render 'order_row', order: order %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% unless @in_delivery.empty? %>
+  <h3>In Delivery</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Completed at</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @in_delivery.each do |order| %>
+        <%= render 'order_row', order: order %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% unless @delivered.empty? %>
+  <h3>Delivered</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Completed at</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @delivered.each do |order| %>
+        <%= render 'order_row', order: order %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

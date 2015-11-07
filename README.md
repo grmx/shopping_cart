@@ -46,8 +46,10 @@ end
 Add to your Product model
 
 ```ruby
+class Book < ActiveRecord::Base
   ...
   acts_as_product
+end
 ```
 
 Also you need to fill delivery types:
