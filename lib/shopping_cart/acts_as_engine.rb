@@ -15,7 +15,12 @@ module ShoppingCart
       end
 
       def acts_as_product
-        ShoppingCart.product_class = self.name
+        PRODUCTS.push(self.name).uniq!
+
+        class_eval do
+          has_many :order_items, class_name: 'ShoppingCart::OrderItem',
+                                 dependent: :destroy, as: :product
+        end
       end
     end
   end

@@ -1,0 +1,12 @@
+<h2>Pens</h2>
+<% @pens.each do |pen| %>
+  <ul>
+    <li>
+      <%= pen.title %>
+      <%= "(#{number_to_currency pen.price})" %>
+      <% if user_signed_in? %>
+        <%= button_to 'Add to cart', shopping_cart.order_items_path(pen_id: pen) %>
+      <% end %>
+    </li>
+  </ul>
+<% end %>
