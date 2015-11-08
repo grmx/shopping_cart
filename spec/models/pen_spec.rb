@@ -1,6 +1,6 @@
-RSpec.describe Book, type: :model do
+RSpec.describe Pen, type: :model do
   it 'fills an array with a model name' do
-    expect(ShoppingCart::PRODUCTS).to include 'Book'
+    expect(ShoppingCart::PRODUCTS).to include 'Pen'
   end
 
   it do

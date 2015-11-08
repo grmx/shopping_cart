@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   mount ShoppingCart::Engine => "/shopping_cart"
   root 'books#index'
   resources :books, only: :index
+  resources :pens, only: :index
 end

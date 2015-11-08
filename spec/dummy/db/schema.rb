@@ -11,9 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102180506) do
+ActiveRecord::Schema.define(version: 20151108141948) do
 
   create_table "books", force: :cascade do |t|
+    t.string   "title"
+    t.decimal  "price",      precision: 5, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "pens", force: :cascade do |t|
     t.string   "title"
     t.decimal  "price",      precision: 5, scale: 2
     t.datetime "created_at",                         null: false
@@ -52,16 +59,16 @@ ActiveRecord::Schema.define(version: 20151102180506) do
   end
 
   create_table "shopping_cart_order_items", force: :cascade do |t|
-    t.decimal  "price",      precision: 5, scale: 2
+    t.decimal  "price",        precision: 5, scale: 2
     t.integer  "quantity"
     t.integer  "product_id"
+    t.string   "product_type"
     t.integer  "order_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "shopping_cart_order_items", ["order_id"], name: "index_shopping_cart_order_items_on_order_id"
-  add_index "shopping_cart_order_items", ["product_id"], name: "index_shopping_cart_order_items_on_product_id"
 
   create_table "shopping_cart_orders", force: :cascade do |t|
     t.decimal  "total_price",         precision: 5, scale: 2
