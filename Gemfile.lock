@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    shopping_cart (0.0.2)
+    shopping_cart (0.0.3)
       aasm
       countries
       country_select
