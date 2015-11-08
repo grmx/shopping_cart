@@ -13,7 +13,6 @@ module ShoppingCart
     describe 'associations' do
       it { should belong_to(:product) }
       it { should belong_to(:order) }
-      it { should have_one(:user).through(:order).class_name('User') }
     end
   end
 end

@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :shopping_cart_order, :class => 'ShoppingCart::Order' do
     total_price "9.99"
     state "in_progress"
-    user
+    customer { create :user }
     delivery { create :shopping_cart_delivery }
     completed_at Time.now
     association :billing_address,  factory: :shopping_cart_address

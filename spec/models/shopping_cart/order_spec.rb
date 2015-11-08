@@ -14,7 +14,7 @@ module ShoppingCart
     end
 
     describe 'associations' do
-      it { should belong_to(:user).class_name('User') }
+      it { should belong_to(:customer) }
       it { should have_many(:order_items).dependent(:destroy) }
       it { should belong_to(:delivery) }
       it do
@@ -29,7 +29,7 @@ module ShoppingCart
       let(:user) { create(:user) }
       let(:book) { create(:book) }
       let!(:order) { build(:shopping_cart_order) }
-      let!(:orders) { create_list(:order_with_random_state, 8, user: user) }
+      let!(:orders) { create_list(:order_with_random_state, 8, customer: user) }
 
       before { order.add_product(book) }
 

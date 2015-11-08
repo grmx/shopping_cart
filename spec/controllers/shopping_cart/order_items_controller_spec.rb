@@ -33,7 +33,7 @@ module ShoppingCart
     end
 
     describe 'PUT #update' do
-      let!(:order) { create(:shopping_cart_order, user: @user) }
+      let!(:order) { create(:shopping_cart_order, customer: @user) }
       let!(:order_item) { create(:shopping_cart_order_item, order: order) }
 
       it 'updates order items quantity' do
@@ -53,7 +53,7 @@ module ShoppingCart
     end
 
     describe 'DELETE #destroy' do
-      let(:order) { create(:shopping_cart_order, user: @user) }
+      let(:order) { create(:shopping_cart_order, customer: @user) }
       let!(:order_item) { create(:shopping_cart_order_item, order: order) }
 
       it 'deletes an order item' do

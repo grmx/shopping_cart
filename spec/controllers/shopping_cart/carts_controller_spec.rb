@@ -4,7 +4,7 @@ module ShoppingCart
 
     sign_in_user
 
-    let!(:order) { create(:order_with_items, user: @user) }
+    let!(:order) { create(:order_with_items, customer: @user) }
 
     describe 'GET #show' do
       it 'responds successfully with an HTTP 200 status code' do

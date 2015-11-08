@@ -6,11 +6,5 @@ require 'countries'
 require 'country_select'
 
 module ShoppingCart
-  mattr_accessor :customer_class
-
   PRODUCTS = []
-
-  def self.customer_class
-    @@customer_class.constantize
-  end
 end

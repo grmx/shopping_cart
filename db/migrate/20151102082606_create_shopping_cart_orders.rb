@@ -4,7 +4,7 @@ class CreateShoppingCartOrders < ActiveRecord::Migration
       t.decimal :total_price, precision: 5, scale: 2
       t.string :state, default: 'in_progress'
       t.datetime :completed_at
-      t.references :user, index: true, foreign_key: true
+      t.belongs_to :customer, polymorphic: true
       t.integer :billing_address_id
       t.integer :shipping_address_id
       t.references :delivery, index: true, foreign_key: true

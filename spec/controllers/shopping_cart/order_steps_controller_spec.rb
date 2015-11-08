@@ -4,7 +4,7 @@ module ShoppingCart
 
     sign_in_user
 
-    let!(:order) { create(:blank_order, user: @user) }
+    let!(:order) { create(:blank_order, customer: @user) }
     let!(:form) { CheckoutForm.new(order) }
 
     describe 'GET #show' do

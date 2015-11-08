@@ -1,7 +1,7 @@
 module ShoppingCart
   RSpec.describe CheckoutForm do
     let(:user) { create(:user) }
-    let(:order) { create(:shopping_cart_order, user: user) }
+    let(:order) { create(:shopping_cart_order, customer: user) }
 
     subject { CheckoutForm.new(order) }
 

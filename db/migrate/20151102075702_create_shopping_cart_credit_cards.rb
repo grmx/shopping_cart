@@ -5,7 +5,7 @@ class CreateShoppingCartCreditCards < ActiveRecord::Migration
       t.string :exp_month, limit: 2
       t.string :exp_year, limit: 4
       t.string :cvv, limit: 3
-      t.references :user, index: true, foreign_key: true
+      t.belongs_to :customer, polymorphic: true
 
       t.timestamps null: false
     end

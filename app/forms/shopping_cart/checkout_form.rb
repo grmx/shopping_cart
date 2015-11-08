@@ -34,10 +34,10 @@ module ShoppingCart
     end
 
     def save_payment_settings(credit_card)
-      if @order.user.credit_card
-        @order.user.credit_card.assign_attributes(credit_card)
+      if @order.customer.credit_card
+        @order.customer.credit_card.assign_attributes(credit_card)
       else
-        @order.user.create_credit_card(credit_card)
+        @order.customer.create_credit_card(credit_card)
       end
     end
 
@@ -63,7 +63,7 @@ module ShoppingCart
     end
 
     def payment
-      @order.user.credit_card || CreditCard.new
+      @order.customer.credit_card || CreditCard.new
     end
 
     private

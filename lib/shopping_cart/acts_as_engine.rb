@@ -4,13 +4,11 @@ module ShoppingCart
 
     module ClassMethods
       def acts_as_customer
-        ShoppingCart.customer_class = self.name
-
         class_eval do
           has_many :orders, class_name: 'ShoppingCart::Order',
-                            dependent: :destroy
+                            dependent: :destroy, as: :customer
           has_one :credit_card, class_name: 'ShoppingCart::CreditCard',
-                                dependent: :destroy
+                                dependent: :destroy, as: :customer
         end
       end
 

@@ -40,16 +40,15 @@ ActiveRecord::Schema.define(version: 20151108141948) do
   end
 
   create_table "shopping_cart_credit_cards", force: :cascade do |t|
-    t.string   "number",     limit: 16
-    t.string   "exp_month",  limit: 2
-    t.string   "exp_year",   limit: 4
-    t.string   "cvv",        limit: 3
-    t.integer  "user_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "number",        limit: 16
+    t.string   "exp_month",     limit: 2
+    t.string   "exp_year",      limit: 4
+    t.string   "cvv",           limit: 3
+    t.integer  "customer_id"
+    t.string   "customer_type"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
-
-  add_index "shopping_cart_credit_cards", ["user_id"], name: "index_shopping_cart_credit_cards_on_user_id"
 
   create_table "shopping_cart_deliveries", force: :cascade do |t|
     t.string   "name"
@@ -74,7 +73,8 @@ ActiveRecord::Schema.define(version: 20151108141948) do
     t.decimal  "total_price",         precision: 5, scale: 2
     t.string   "state",                                       default: "in_progress"
     t.datetime "completed_at"
-    t.integer  "user_id"
+    t.integer  "customer_id"
+    t.string   "customer_type"
     t.integer  "billing_address_id"
     t.integer  "shipping_address_id"
     t.integer  "delivery_id"
@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 20151108141948) do
   end
 
   add_index "shopping_cart_orders", ["delivery_id"], name: "index_shopping_cart_orders_on_delivery_id"
-  add_index "shopping_cart_orders", ["user_id"], name: "index_shopping_cart_orders_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

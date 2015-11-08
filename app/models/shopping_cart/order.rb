@@ -2,7 +2,7 @@ module ShoppingCart
   class Order < ActiveRecord::Base
     include AASM
 
-    belongs_to :user, class_name: ShoppingCart.customer_class.to_s
+    belongs_to :customer, polymorphic: true
     belongs_to :billing_address, class_name: 'Address', autosave: true
     belongs_to :shipping_address, class_name: 'Address', autosave: true
     belongs_to :delivery
