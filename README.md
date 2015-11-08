@@ -43,10 +43,17 @@ class User < ActiveRecord::Base
 end
 ```
 
-Add to your Product model
+Add to your product models:
 
 ```ruby
 class Book < ActiveRecord::Base
+  ...
+  acts_as_product
+end
+```
+
+```ruby
+class Pen < ActiveRecord::Base
   ...
   acts_as_product
 end
@@ -78,10 +85,16 @@ For notification messages add to `app/views/layout/application.html.erb`:
 
 ### Helpers
 
-Add a product to the cart:
+Add a book to the cart:
 
 ```ruby
-= button_to 'Add to cart', shopping_cart.order_items_path(product_id: book)
+= button_to 'Add to cart', shopping_cart.order_items_path(book_id: book)
+```
+
+Add a pen to the cart:
+
+```ruby
+= button_to 'Add to cart', shopping_cart.order_items_path(pen_id: pen)
 ```
 
 Add a link to the cart:
