@@ -8,9 +8,9 @@ module ShoppingCart
 
         class_eval do
           has_many :orders, class_name: 'ShoppingCart::Order',
-            dependent: :destroy
+                            dependent: :destroy
           has_one :credit_card, class_name: 'ShoppingCart::CreditCard',
-            dependent: :destroy
+                                dependent: :destroy
         end
       end
 

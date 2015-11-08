@@ -4,8 +4,8 @@ module ShoppingCart
 
     sign_in_user
 
-    let!(:order){ create(:blank_order, user: @user) }
-    let!(:form){ CheckoutForm.new(order) }
+    let!(:order) { create(:blank_order, user: @user) }
+    let!(:form) { CheckoutForm.new(order) }
 
     describe 'GET #show' do
       context 'billing address' do
@@ -18,7 +18,7 @@ module ShoppingCart
 
       context 'shipping address' do
         it 'renders a template' do
-          get :show, { id: :shipping_address }, { billing_address: true }
+          get :show, { id: :shipping_address }, billing_address: true
           expect(response).to render_template :shipping_address
         end
 
@@ -30,7 +30,7 @@ module ShoppingCart
 
       context 'delivery' do
         it 'renders a template' do
-          get :show, { id: :delivery }, { shipping_address: true }
+          get :show, { id: :delivery }, shipping_address: true
           expect(response).to render_template :delivery
         end
 
@@ -42,7 +42,7 @@ module ShoppingCart
 
       context 'credit card' do
         it 'renders a template' do
-          get :show, { id: :payment }, { delivery: true }
+          get :show, { id: :payment }, delivery: true
           expect(response).to render_template :payment
         end
 
@@ -54,7 +54,7 @@ module ShoppingCart
 
       context 'confirm' do
         it 'renders a template' do
-          get :show, { id: :confirm }, { payment: true }
+          get :show, { id: :confirm }, payment: true
           expect(response).to render_template :confirm
         end
 
@@ -66,7 +66,7 @@ module ShoppingCart
 
       context 'complete' do
         it 'renders a template' do
-          get :show, { id: :complete }, { confirm: true }
+          get :show, { id: :complete }, confirm: true
           expect(response).to render_template :complete
         end
 

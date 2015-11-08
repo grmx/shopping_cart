@@ -1,4 +1,4 @@
-require_dependency "shopping_cart/application_controller"
+require_dependency 'shopping_cart/application_controller'
 
 module ShoppingCart
   class OrderStepsController < ApplicationController
@@ -28,9 +28,9 @@ module ShoppingCart
     end
 
     def order_steps_params
-      params.permit(address: [:first_name, :last_name, :address, :city, :country,
-                              :zipcode, :phone],
-                    credit_card: [:number, :exp_month, :exp_year, :cvv],
+      params.permit(address: [:first_name, :last_name, :address, :city,
+                              :country, :zipcode, :phone], credit_card:
+                             [:number, :exp_month, :exp_year, :cvv],
                     delivery: :id)
     end
   end

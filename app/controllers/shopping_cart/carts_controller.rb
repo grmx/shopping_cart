@@ -1,4 +1,4 @@
-require_dependency "shopping_cart/application_controller"
+require_dependency 'shopping_cart/application_controller'
 
 module ShoppingCart
   class CartsController < ApplicationController
@@ -26,8 +26,8 @@ module ShoppingCart
     end
 
     def order_item_params
-      params.require(:order_items).permit(params[:order_items].keys.
-        map { |id| { "#{id}": [:quantity] } })
+      params.require(:order_items).permit(params[:order_items].keys
+        .map { |id| { "#{id}": [:quantity] } })
     end
   end
 end

@@ -7,11 +7,10 @@ module ShoppingCart
     sign_in_user
 
     describe 'POST #create' do
-
       context 'with valid attributes' do
         it 'saves an order_item in the database' do
-          expect { post :create, product_id: book.id }.
-            to change(OrderItem, :count).by(1)
+          expect { post :create, product_id: book.id }
+            .to change(OrderItem, :count).by(1)
         end
 
         it 'assigns a notice message' do
@@ -38,8 +37,8 @@ module ShoppingCart
       let!(:order_item) { create(:shopping_cart_order_item, order: order) }
 
       it 'updates order items quantity' do
-        expect { put :update, id: order_item.id, order_item: { quantity: 2 } }.
-          to change{order.order_items.first.quantity}.from(1).to(2)
+        expect { put :update, id: order_item.id, order_item: { quantity: 2 } }
+          .to change { order.order_items.first.quantity }.from(1).to(2)
       end
 
       it 'assigns a notice message' do
@@ -58,8 +57,8 @@ module ShoppingCart
       let!(:order_item) { create(:shopping_cart_order_item, order: order) }
 
       it 'deletes an order item' do
-        expect { delete :destroy, id: order_item }.
-          to change(OrderItem, :count).by(-1)
+        expect { delete :destroy, id: order_item }
+          .to change(OrderItem, :count).by(-1)
       end
 
       it 'assigns a notice message' do

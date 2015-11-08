@@ -4,7 +4,7 @@ module ShoppingCart
 
     sign_in_user
 
-    let(:in_progress) { create(:shopping_cart_order, state: 'in_progress',user: @user) }
+    let(:in_progress) { create(:shopping_cart_order, state: 'in_progress', user: @user) }
     let(:in_queue) { create(:shopping_cart_order, state: 'in_queue', user: @user) }
     let(:in_delivery) { create(:shopping_cart_order, state: 'in_delivery', user: @user) }
     let(:delivered) { create(:shopping_cart_order, state: 'delivered', user: @user) }

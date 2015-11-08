@@ -32,7 +32,8 @@ module ShoppingCart
 
       describe '#mask' do
         it 'returns last digest with hidden symobls' do
-          expect(credit_card.mask).to eq "**** **** **** #{credit_card.last_digits}"
+          expect(credit_card.mask)
+            .to eq "**** **** **** #{credit_card.last_digits}"
         end
       end
 

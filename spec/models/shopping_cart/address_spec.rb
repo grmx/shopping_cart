@@ -16,7 +16,8 @@ module ShoppingCart
       let(:address) { create(:shopping_cart_address) }
 
       it 'returns a full name' do
-        expect(address.full_name).to eq "#{address.first_name} #{address.last_name}"
+        expect(address.full_name)
+          .to eq "#{address.first_name} #{address.last_name}"
       end
     end
   end

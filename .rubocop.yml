@@ -1,0 +1,9 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'spec/dummy/**/*'
+    - 'spec/factories/**/*'
+Documentation:
+  Enabled: false

@@ -40,7 +40,7 @@ module ShoppingCart
 
     def add_product(product)
       current_item = order_items.find_or_initialize_by(product: product,
-        price: product.price)
+                                                       price: product.price)
       current_item.increment(:quantity)
       current_item.save
     end

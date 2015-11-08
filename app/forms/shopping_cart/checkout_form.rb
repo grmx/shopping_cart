@@ -8,16 +8,12 @@ module ShoppingCart
 
     def update(step, params)
       case step
-      when :billing_address
-        save_billing_address(params[:address])
-      when :shipping_address
-        save_shipping_address(params[:address])
+      when :billing_address then save_billing_address(params[:address])
+      when :shipping_address then save_shipping_address(params[:address])
       when :delivery
         @order.delivery = Delivery.find(params[:delivery][:id])
-      when :payment
-        save_payment_settings(params[:credit_card])
-      when :confirm
-        order_confirmation
+      when :payment then save_payment_settings(params[:credit_card])
+      when :confirm then order_confirmation
       end
     end
 
