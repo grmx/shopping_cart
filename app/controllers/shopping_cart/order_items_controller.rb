@@ -15,15 +15,11 @@ module ShoppingCart
 
     def update
       @order_item.update(order_item_params)
-      @order_item.order.calc_total_price
-      @order_item.order.save
       redirect_to cart_path, notice: t('product.updated')
     end
 
     def destroy
       @order_item.destroy
-      current_order.calc_total_price
-      current_order.save
       redirect_to cart_path, notice: t('product.deleted')
     end
 

@@ -6,16 +6,14 @@ module ShoppingCart
     background do
       login_as user
       visit books_path
+      click_on 'Add to cart'
     end
 
     scenario 'Authorized user adds the book to the Cart' do
-      click_on 'Add to cart'
       expect(page).to have_content 'Product successfully added to Shopping Cart'
     end
 
     scenario 'Authorized user adds several books to the Cart' do
-      click_on 'Add to cart'
-
       expect(page).to have_content 'Product successfully added to Shopping Cart'
       expect(current_path).to eq shopping_cart.cart_path
 
@@ -26,7 +24,6 @@ module ShoppingCart
     end
 
     scenario 'Authorized user adds the book to the Cart twice' do
-      click_on 'Add to cart'
       expect(page).to have_content book.price
       visit books_path
       click_on 'Add to cart'

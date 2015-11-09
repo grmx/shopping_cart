@@ -3,7 +3,7 @@ require_dependency 'shopping_cart/application_controller'
 module ShoppingCart
   class CartsController < ApplicationController
     def show
-      @order_items = current_order.order_items.order('created_at DESC')
+      @order_items = current_order.order_items
     end
 
     def update
@@ -20,8 +20,6 @@ module ShoppingCart
 
     def order_update(order)
       order.order_items.update(order_item_params.keys, order_item_params.values)
-      order.calc_total_price
-      order.save
     end
 
     def order_item_params
